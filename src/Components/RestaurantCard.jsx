@@ -1,13 +1,11 @@
 import { AiFillStar } from "react-icons/ai";
+import { IMG_URL } from "../Utils/config";
 
-const RestaurantCard = () => {
+const RestaurantCard = ({ info }) => {
+  console.log(info);
+
   return (
     <div className=" w-72 hover:scale-95 transition-all duration-300  border-gray-500 shadow-md hover:shadow-lg">
-      <img
-        className="w-72 h-52 object-cover rounded-md shadow-md"
-        src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/suz4we5x7dgznrquxvu9"
-        alt="restaurant-poster"
-      />
       <div className="p-3  flex flex-col gap-1 ">
         <h2 className="text-2xl font-semibold">Burger King</h2>
         <div className="text-lg font-medium flex items-center tracking-wide">
