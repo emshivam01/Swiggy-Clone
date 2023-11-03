@@ -6,7 +6,7 @@ const RestaurantCard = ({ restaurant }) => {
   return (
     <div className=" w-[350px]  m-auto hover:scale-95 transition-all duration-300  border-gray-500 shadow-md hover:shadow-lg">
       <img
-        className="w-96 h-52 object-cover rounded-md shadow-md"
+        className="w-96 h-52 object-cover rounded-md shadow-md "
         src={IMG_URL + restaurant.info.cloudinaryImageId}
         alt="restaurant-poster"
       />

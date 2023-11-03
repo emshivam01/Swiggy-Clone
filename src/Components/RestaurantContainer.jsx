@@ -10,18 +10,17 @@ const RestaurantContainer = ({ search }) => {
       setRestaurantList(resObj.restaurants);
     } else {
       const filteredRestaurants = resObj.restaurants.filter((restaurant) => {
-        return restaurant.info.name === search;
+        return restaurant.info.name.toLowerCase().includes(search);
       });
       setRestaurantList(filteredRestaurants);
     }
   }, [search]);
 
   return (
-    <div className="mt-10 grid lg:grid-cols-4 gap-y-4">
+    <div className="mt-14 grid lg:grid-cols-4 gap-y-4">
       {restaurantList.map((restaurant) => (
         <RestaurantCard restaurant={restaurant} key={restaurant.info.id} />
       ))}
-      {console.log(restaurantList)}
     </div>
   );
 };
