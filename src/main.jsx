@@ -5,16 +5,28 @@ import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Error from "./Components/Error.jsx";
 import Contact from "./Components/Contact.jsx";
+import Body from "./Components/Body.jsx";
+import Restaurant from "./Components/Restaurant.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     errorElement: <Error />,
-  },
-  {
-    path: "/contact",
-    element: <Contact />,
+    children: [
+      {
+        path: "/",
+        element: <Body />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+      {
+        path: "/restaurant/:id",
+        element: <Restaurant />,
+      },
+    ],
   },
 ]);
 

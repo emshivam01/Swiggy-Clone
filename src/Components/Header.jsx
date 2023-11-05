@@ -8,6 +8,7 @@ import {
   AiOutlineLogin,
 } from "react-icons/ai";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [btn, setBtn] = useState("Logout");
@@ -19,7 +20,9 @@ const Header = () => {
   return (
     <div className="flex items-center justify-between px-72 py-2 border-2 shadow-lg shadow-slate-200">
       <div className="w-[70px] rounded-full overflow-hidden">
-        <img src="foodiefleet.png" alt="Foodie Fleet logo" />
+        <Link to="/">
+          <img src="foodiefleet.png" alt="Foodie Fleet logo" />
+        </Link>
       </div>
 
       <div className="">

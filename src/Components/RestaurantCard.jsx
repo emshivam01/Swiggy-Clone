@@ -4,7 +4,7 @@ import { IMG_URL } from "../Utils/config";
 
 const RestaurantCard = ({ restaurant }) => {
   return (
-    <div className=" w-[350px]  m-auto hover:scale-95 transition-all duration-300  border-gray-500 shadow-md hover:shadow-[0px_10px_1px_rgba(221,_221,_221,_1),_0_10px_20px_rgba(204,_204,_204,_1)]">
+    <div className=" w-[350px]  m-auto hover:scale-95 transition-all duration-300  border-gray-500 shadow-md hover:shadow-xl">
       <img
         className="w-96 h-52 object-cover rounded-md shadow-md "
         src={IMG_URL + restaurant.info.cloudinaryImageId}
