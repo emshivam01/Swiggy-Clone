@@ -7,6 +7,7 @@ import {
   AiOutlineLogout,
   AiOutlineLogin,
 } from "react-icons/ai";
+import { GrRestaurant } from "react-icons/gr";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -18,19 +19,21 @@ const Header = () => {
   };
 
   return (
-    <div className="flex items-center justify-between px-72 py-2 border-2 shadow-lg shadow-slate-200">
+    <div className="flex items-center justify-between px-72 py-5 border-2 shadow-lg shadow-slate-200">
       <div className="w-[70px] rounded-full overflow-hidden">
         <Link to="/">
-          <img src="foodiefleet.png" alt="Foodie Fleet logo" />
+          <GrRestaurant size={45} />
         </Link>
       </div>
 
       <div className="">
         <ul className="flex gap-8 ">
-          <li className="text-lg font-semibold  flex items-center gap-2 cursor-pointer">
-            <AiOutlineHome size={25} />
-            Home
-          </li>
+          <Link to="/">
+            <li className="text-lg font-semibold  flex items-center gap-2 cursor-pointer">
+              <AiOutlineHome size={25} />
+              Home
+            </li>
+          </Link>
           <li className="text-lg font-semibold  flex items-center gap-2 cursor-pointer">
             <AiOutlineSearch size={25} />
             Search
