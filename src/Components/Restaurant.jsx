@@ -2,7 +2,7 @@ import { AiFillStar } from "react-icons/ai";
 import { BiTime } from "react-icons/bi";
 import { HiOutlineCurrencyRupee } from "react-icons/hi";
 import RestauramtDish from "./Restaurant/RestaurantDish";
-import Coupon from "./Restaurant/coupon";
+import Coupon from "./Restaurant/Coupon.jsx";
 import { useEffect, useState } from "react";
 import { RESTAURANT_URL } from "../Utils/config";
 import { useParams } from "react-router-dom";

@@ -3,7 +3,7 @@ import { DISH_IMG_URL } from "../../Utils/config";
 const RestauramtDish = ({ item }) => {
   console.log(item);
 
-  const { name, price, description, imageId } = item.card?.info;
+  const { name, price, description, imageId } = item.card.info;
 
   return (
     <div className="mb-5 shadow-md p-3 border-b flex justify-between rounded-md">
