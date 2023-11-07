@@ -6,7 +6,7 @@ import Coupon from "./Restaurant/Coupon.jsx";
 import { useEffect, useState } from "react";
 import { RESTAURANT_URL } from "../Utils/config";
 import { useParams } from "react-router-dom";
-
+import RestauramtShimmer from "./Restaurant/RestaurantShimmer.jsx";
 const Restaurant = () => {
   const [dishItems, setDishItems] = useState([]);
   const [dishes, setDishes] = useState([]);
@@ -40,7 +40,9 @@ const Restaurant = () => {
   console.log(name, cuisines);
   console.log(dishes);
 
-  return (
+  return dishItems.length === 0 ? (
+    <RestauramtShimmer />
+  ) : (
     <div className="px-[560px] mt-10">
       <div className="flex flex-col p-2">
         <div className="w-full flex justify-between">

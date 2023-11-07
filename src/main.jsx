@@ -7,6 +7,7 @@ import Error from "./Components/Error.jsx";
 import Contact from "./Components/Contact.jsx";
 import Body from "./Components/Body.jsx";
 import Restaurant from "./Components/Restaurant.jsx";
+import RestauramtShimmer from "./Components/Restaurant/RestaurantShimmer.jsx";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: "/restaurant/:id",
         element: <Restaurant />,
+      },
+      {
+        path: "/shimmer",
+        element: <RestauramtShimmer />,
       },
     ],
   },
