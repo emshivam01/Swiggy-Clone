@@ -1,8 +1,6 @@
 import { DISH_IMG_URL } from "../../Utils/config";
 
 const RestauramtDish = ({ item }) => {
-  console.log(item);
-
   const { name, price, description, imageId } = item.card.info;
 
   return (

@@ -8,6 +8,7 @@ import Contact from "./Components/Contact.jsx";
 import Body from "./Components/Body.jsx";
 import Restaurant from "./Components/Restaurant.jsx";
 import RestauramtShimmer from "./Components/Restaurant/RestaurantShimmer.jsx";
+import Testing from "./Components/Testing.jsx";
 
 const router = createBrowserRouter([
   {
@@ -28,8 +29,8 @@ const router = createBrowserRouter([
         element: <Restaurant />,
       },
       {
-        path: "/shimmer",
-        element: <RestauramtShimmer />,
+        path: "/testing",
+        element: <Testing/>,
       },
     ],
   },
