@@ -9,6 +9,7 @@ import Body from "./Components/Body.jsx";
 import Restaurant from "./Components/Restaurant.jsx";
 import RestauramtShimmer from "./Components/Restaurant/RestaurantShimmer.jsx";
 import Testing from "./Components/Testing.jsx";
+import Res from "./Components/Res.jsx";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: "/testing",
         element: <Testing />,
+      },
+      {
+        path: "/res",
+        element: <Res />,
       },
     ],
   },

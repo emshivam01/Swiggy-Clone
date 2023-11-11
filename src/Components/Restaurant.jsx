@@ -37,8 +37,7 @@ const Restaurant = () => {
     costForTwoMessage,
   } = dishItems;
 
-  console.log(name, cuisines);
-  console.log(dishes);
+  console.log(dishes, 41);
 
   return dishItems.length === 0 ? (
     <RestauramtShimmer />
