@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
@@ -10,6 +10,9 @@ import Restaurant from "./Components/Restaurant.jsx";
 import RestauramtShimmer from "./Components/Restaurant/RestaurantShimmer.jsx";
 import Testing from "./Components/Testing.jsx";
 import Res from "./Components/Res.jsx";
+import ClassyComponent from "./Components/ClassyComponent.jsx";
+
+const Lazyy = lazy(() => import("./Components/Lazy.jsx"));
 
 const router = createBrowserRouter([
   {
@@ -37,12 +40,24 @@ const router = createBrowserRouter([
         path: "/res",
         element: <Res />,
       },
+      {
+        path: "/lazy",
+        element: (
+          <Suspense>
+            <Lazyy />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/classy",
+        element: <ClassyComponent name={"Classy"} />,
+      },
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+  // <React.StrictMode>
+  <RouterProvider router={router} />
+  // </React.StrictMode>
 );
