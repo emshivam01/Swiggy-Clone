@@ -10,6 +10,7 @@ import {
 import { GrRestaurant } from "react-icons/gr";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import useCheckOnlineStatus from "../Utils/useCheckOnlineStatus";
 
 const Header = () => {
   const [btn, setBtn] = useState("Logout");
@@ -17,6 +18,8 @@ const Header = () => {
   const toggleBtn = () => {
     btn === "Logout" ? setBtn("Login") : setBtn("Logout");
   };
+
+  const status = useCheckOnlineStatus();
 
   return (
     <div className="flex items-center justify-between px-72 py-5 border-2 shadow-lg shadow-slate-200">
@@ -64,8 +67,17 @@ const Header = () => {
 
             {btn}
           </button>
+
+          <span className="mt-1">
+            {status ? (
+              <span className="inline-block rounded-full  shadow-lg w-3 h-3 bg-green-600"></span>
+            ) : (
+              <span className="inline-block rounded-full shadow-lg w-3 h-3 bg-red-500"></span>
+            )}
+          </span>
         </ul>
       </div>
+      {console.log(72, status)}
     </div>
   );
 };

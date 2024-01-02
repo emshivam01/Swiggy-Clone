@@ -1,9 +1,26 @@
-
+import { useEffect, useState } from "react";
 
 const useCheckOnlineStatus = () => {
-  return (
-    <div>useCheckOnlineStatus</div>
-  )
-}
+  const [status, setStatus] = useState(true);
 
-export default useCheckOnlineStatus
+  const handleOnline = () => {
+    setStatus(true);
+  };
+
+  const handleOffline = () => {
+    setStatus(false);
+  };
+  useEffect(() => {
+    window.addEventListener("online", handleOnline);
+    window.addEventListener("offline", handleOffline);
+
+    return () => {
+      window.removeEventListener("online", handleOnline);
+      window.removeEventListener("offline", handleOffline);
+    };
+  }, []);
+
+  return status;
+};
+
+export default useCheckOnlineStatus;
