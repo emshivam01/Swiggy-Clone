@@ -17,7 +17,7 @@ import { useParams } from "react-router-dom";
 import RestauramtShimmer from "./Restaurant/RestaurantShimmer.jsx";
 
 const Testing = () => {
-  const [dishItems, setDishItems] = useState([]); 
+  const [dishItems, setDishItems] = useState([]);
   const [dish, setDish] = useState([]);
   const [x, setX] = useState([]);
   const id = "45602";
@@ -88,7 +88,7 @@ const AccordionHeader = ({ title, isOpen, setIsOpen }) => {
 
   return (
     <div className="flex items-center justify-between">
-      <h2 className="text-xl font-bold"> {title}</h2>
+      <h2 className="text-xl font-bold"> {title} </h2>
 
       <button onClick={handleToggle}>
         {isOpen ? (

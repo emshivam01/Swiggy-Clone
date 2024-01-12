@@ -1,7 +1,7 @@
 import { AiFillStar } from "react-icons/ai";
 import { BiTime } from "react-icons/bi";
 import { HiOutlineCurrencyRupee } from "react-icons/hi";
-import RestauramtDish from "./Restaurant/RestaurantDish";
+import RestaurantDish from "./Restaurant/RestaurantDish";
 import Coupon from "./Restaurant/Coupon.jsx";
 import { useEffect, useState } from "react";
 import { RESTAURANT_URL } from "../Utils/config";
@@ -87,7 +87,7 @@ const Restaurant = () => {
 
         <div className="mt-10">
           {dishes?.map((item) => {
-            return <RestauramtDish item={item} key={item?.card?.info?.id} />;
+            return <RestaurantDish item={item} key={item?.card?.info?.id} />;
           })}
         </div>
       </div>

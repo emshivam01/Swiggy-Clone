@@ -11,6 +11,7 @@ import RestauramtShimmer from "./Components/Restaurant/RestaurantShimmer.jsx";
 import Testing from "./Components/Testing.jsx";
 import Res from "./Components/Res.jsx";
 import ClassyComponent from "./Components/ClassyComponent.jsx";
+import LiveRestaurant from "./Components/LiveRestaurant.jsx";
 
 const Lazyy = lazy(() => import("./Components/Lazy.jsx"));
 
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "/testing",
         element: <Testing />,
+      },
+      {
+        path: "/hotel",
+        element: <LiveRestaurant />,
       },
       {
         path: "/res",

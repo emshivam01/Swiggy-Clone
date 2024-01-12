@@ -77,7 +77,6 @@ const Header = () => {
           </span>
         </ul>
       </div>
-      {console.log(72, status)}
     </div>
   );
 };

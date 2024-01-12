@@ -1,21 +1,41 @@
 import { useState, useEffect } from "react";
 import RestaurantCard from "./RestaurantCard";
-import resObj from "../Utils/restaurantData";
 import { Link } from "react-router-dom";
 
 const RestaurantContainer = ({ search }) => {
-  const [restaurantList, setRestaurantList] = useState(resObj.restaurants);
+  const [restaurantData, setRestaurantData] = useState([]);
+  const [restaurantList, setRestaurantList] = useState([]);
+
+  const fetchRestaurant = async () => {
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.5940947&lng=85.1375645&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    );
+
+    const resData = await data.json();
+    console.log(
+      resData.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
+    );
+    setRestaurantData(
+      resData.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
+    );
+  };
+
+  useEffect(() => {
+    fetchRestaurant();
+  }, []);
 
   useEffect(() => {
     if (search === "") {
-      setRestaurantList(resObj.restaurants);
+      setRestaurantList(restaurantData);
     } else {
-      const filteredRestaurants = resObj.restaurants.filter((restaurant) => {
-        return restaurant.info.name.toLowerCase().includes(search);
+      const filteredRestaurant = restaurantData.filter((restaurant) => {
+        return restaurant.info.name
+          .toLowerCase()
+          .includes(search.toLowerCase());
       });
-      setRestaurantList(filteredRestaurants);
+      setRestaurantList(filteredRestaurant);
     }
-  }, [search]);
+  }, [search, restaurantData]);
 
   return (
     <div className="mt-14 grid lg:grid-cols-4 gap-y-4">
