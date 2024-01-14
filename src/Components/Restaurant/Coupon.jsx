@@ -2,7 +2,7 @@ import { BiSolidDiscount } from "react-icons/bi";
 
 const Coupon = () => {
   return (
-    <div className="w-72 flex  flex-shrink-0 border-2  border-[#e9e9eb]  mt-10 p-2 pl-0 rounded-md">
+    <div className="w-72 flex  flex-shrink-0 border-2  border-[#e9e9eb] cursor-pointer mt-10 p-2 pl-0 rounded-md">
       <div className="-rotate-90 flex items-center border-b border-[#e8e8ea]">
         <p className="text-[11px] font-semibold text-[#e46d47]">FLAT DEAL</p>
       </div>

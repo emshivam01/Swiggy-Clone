@@ -1,4 +1,4 @@
-const RestauramtShimmer = () => {
+const RestaurantShimmer = () => {
   return (
     <div className="px-[560px] mt-10 ">
       <div className="w-full ">
@@ -99,4 +99,4 @@ const RestauramtShimmer = () => {
   );
 };
 
-export default RestauramtShimmer;
+export default RestaurantShimmer;

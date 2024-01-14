@@ -22,7 +22,7 @@ const Header = () => {
   const status = useCheckOnlineStatus();
 
   return (
-    <div className="flex items-center justify-between px-72 py-5 border-2 shadow-lg shadow-slate-200">
+    <div className="flex items-center justify-between px-72 py-5 border-2 shadow-md shadow-slate-200">
       <div className="w-[70px] rounded-full overflow-hidden">
         <Link to="/">
           <GrRestaurant size={45} />

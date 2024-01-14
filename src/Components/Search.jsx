@@ -14,7 +14,6 @@ const Search = ({ search, setSearch }) => {
           placeholder="Search for restaurants and food"
           value={search}
         />
-        {console.log(typeof search)}
 
         {search.length > 0 ? (
           <button

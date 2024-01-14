@@ -4,13 +4,13 @@ import { IMG_URL } from "../Utils/config";
 
 const RestaurantCard = ({ restaurant }) => {
   return (
-    <div className=" w-[350px] min-h-[340px]  m-auto hover:scale-95 transition-all duration-300  border-gray-500 shadow-md hover:shadow-xl">
+    <div className=" w-[350px] min-h-[320px] bg-[#FAF9F8]  m-auto hover:scale-95 transition-all duration-300  border-gray-500 shadow-md hover:shadow-xl">
       <img
         className="w-96 h-52 object-cover rounded-t-md shadow-md "
         src={IMG_URL + restaurant.info.cloudinaryImageId}
         alt="restaurant-poster"
       />
-      <div className="p-3 mt-2">
+      <div className="p-3 mt-1 bg-[#FAF9F8]">
         <h2
           className="text-xl font-semibold truncate"
           title={restaurant.info.name}

@@ -12,6 +12,7 @@ import Testing from "./Components/Testing.jsx";
 import Res from "./Components/Res.jsx";
 import ClassyComponent from "./Components/ClassyComponent.jsx";
 import LiveRestaurant from "./Components/LiveRestaurant.jsx";
+import RestaurantCardShimmer from "./Components/RestaurantCardShimmer.jsx";
 
 const Lazyy = lazy(() => import("./Components/Lazy.jsx"));
 
