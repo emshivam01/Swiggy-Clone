@@ -22,7 +22,7 @@ const Header = () => {
   const status = useCheckOnlineStatus();
 
   return (
-    <div className=" flex items-center justify-between px-8 md:px-20 lg:px-32 py-3 lg:py-5 shadow-md shadow-slate-200 ">
+    <div className=" flex items-center justify-between px-8 md:px-20 lg:px-32 py-3 lg:py-5 shadow-md shadow-slate-200  sticky top-0 z-20 bg-white ">
       <div className="w-[70px]">
         <Link to="/">
           <svg
