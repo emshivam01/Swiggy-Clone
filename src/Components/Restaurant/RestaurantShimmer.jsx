@@ -1,6 +1,6 @@
 const RestaurantShimmer = () => {
   return (
-    <div className="px-[560px] mt-10 ">
+    <div className="px-[450px]  mt-10 ">
       <div className="w-full ">
         <div className="w-full flex  justify-between ">
           <div className="p-2 w-40 h-32 ">

@@ -3,14 +3,19 @@ import { DISH_IMG_URL } from "../../Utils/config";
 const RestauramtDish = ({ item }) => {
   const { name, price, description, imageId } = item.card.info;
 
+  const expandDescription = () => {};
+
   return (
     <div className="mb-5 shadow-md p-3 border flex justify-between rounded-md relative">
       <div className="max-w-xl">
         <p className="text-lg  font-bold ">{name}</p>
         <span className="font-semibold ">&#8377;{price / 100}</span>
-        {description && (
-          <p className="mt-4  truncate text-[#282c3f73]">{description}</p>
-        )}
+        <div className="flex ">
+          {description && (
+            <p className="mt-4 max-w-md truncate text-[#282c3f73]">{description}</p>
+          )}
+          <button className="cursor-pointer mt-4">See more</button>
+        </div>
       </div>
       <div className="">
         {imageId && (

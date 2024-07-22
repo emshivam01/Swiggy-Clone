@@ -41,17 +41,18 @@ const RestaurantContainer = ({ search }) => {
   return restaurantData === null ? ( // Check for null instead of existence
     <RestaurantCardShimmer />
   ) : restaurantList.length === 0 ? (
-    <div className="mt-10 w-full flex items-center justify-center">
+    <div className="mt-10 w-full flex items-center justify-center ">
       <p className="text-xl font-bold">No match found for "{search}"</p>
     </div>
   ) : (
-    <div className="mt-14 grid lg:grid-cols-4 gap-y-4">
-      {restaurantList.map((restaurant) => (
-        <Link to={"/restaurant/" + restaurant.info.id} key={restaurant.info.id}>
-          <RestaurantCard restaurant={restaurant} />
-        </Link>
-      ))}
-    </div>
+    <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+  {restaurantList.map((restaurant) => (
+    <Link to={"/restaurant/" + restaurant.info.id} key={restaurant.info.id}>
+      <RestaurantCard restaurant={restaurant} />
+    </Link>
+  ))}
+</div>
+
   );
 };
 

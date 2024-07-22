@@ -12,7 +12,7 @@ export default RestaurantCardShimmer;
 
 const ShimmerCard = () => {
   return (
-    <div className="w-[350px] min-h-[340px] ">
+    <div className="w-[300px] min-h-[340px] ">
       <div className="w-full h-52 rounded-md bg-gray-400"></div>
       <div className="mt-4">
         <p className="h-4 w-full rounded-sm bg-gray-400"></p>

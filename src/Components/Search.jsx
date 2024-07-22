@@ -3,8 +3,8 @@ import { RxCross2 } from "react-icons/rx";
 
 const Search = ({ search, setSearch }) => {
   return (
-    <div>
-      <div className="w-[800px] border border-[#bebfc5] flex items-center m-auto rounded-md overflow-hidden pr-5 ">
+    <div  className="">
+      <div className="border-[2px] max-w-lg border-[#bebfc5]  flex items-center m-auto rounded-md overflow-hidden pr-5 ">
         <input
           onChange={(e) => {
             setSearch(e.target.value.toLowerCase());

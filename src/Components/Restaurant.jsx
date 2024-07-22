@@ -19,12 +19,10 @@ const Restaurant = () => {
   const fetchDishes = async () => {
     const data = await fetch(RESTAURANT_URL + id);
     const DishItems = await data.json();
-    console.log(DishItems);
-    console.log(DishItems?.data?.cards[0]?.card?.card?.info);
-    setDishItems(DishItems?.data?.cards[0]?.card?.card?.info);
+    console.log(DishItems.data.cards[4].groupedCard.cardGroupMap.REGULAR.cards[1].card.card.itemCards, 233);
+    setDishItems(DishItems?.data?.cards[2]?.card?.card?.info);
     setDishes(
-      DishItems.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[3]
-        ?.card?.card?.itemCards
+      DishItems.data.cards[4].groupedCard.cardGroupMap.REGULAR.cards[1].card.card.itemCards
     );
   };
 
@@ -37,12 +35,12 @@ const Restaurant = () => {
     costForTwoMessage,
   } = dishItems;
 
-  console.log(dishes, 41);
+  console.log(dishes, 39);
 
   return dishItems.length === 0 ? (
     <RestauramtShimmer />
   ) : (
-    <div className="px-[560px] mt-10">
+    <div className="lg:px-[400px] mt-10">
       <div className="flex flex-col p-2">
         <div className="w-full flex justify-between">
           <div>
@@ -53,7 +51,7 @@ const Restaurant = () => {
             </div>
           </div>
 
-          <div className="p-2 flex flex-col justify-between items-center rounded-md  border border-[#e9e9eb]">
+          <div className="p-2 flex flex-col justify-between items-center rounded-md  border border-[#d9d9db]">
             <p className="text-lg font-bold  text-[#7e808c] flex items-center gap-2 border-b px-2 pb-1">
               <AiFillStar /> {avgRatingString}
             </p>
@@ -61,7 +59,7 @@ const Restaurant = () => {
           </div>
         </div>
 
-        <div className="border-t border-dashed border-[#d3d3d3] w-full h-0 mt-7"></div>
+        <div className="border-t border-dashed border-[#d9d9db] w-full h-0 mt-7"></div>
 
         {/**Offer*/}
         <div className="text-base font-extrabold flex gap-8 mt-7">
