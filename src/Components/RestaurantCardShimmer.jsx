@@ -1,6 +1,6 @@
 const RestaurantCardShimmer = () => {
   return (
-    <div className="mt-16 animate-pulse flex flex-wrap justify-between">
+    <div className="mt-8 animate-pulse flex flex-wrap justify-between">
       {Array.from({ length: 8 }, (_, i) => (
         <ShimmerCard key={i} />
       ))}

@@ -28,7 +28,7 @@ const RestaurantCard = ({ restaurant }) => {
           {restaurant.info.cuisines.slice(0, 4).join(", ")}
         </div>
 
-        <div className="text-base font-normal">{restaurant.info.locality}</div>
+        <div className="text-base truncate font-normal" title={restaurant.info.locality}>{restaurant.info.locality}</div>
       </div>
     </div>
   );
