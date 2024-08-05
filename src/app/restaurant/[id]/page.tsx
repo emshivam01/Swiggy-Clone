@@ -11,30 +11,30 @@ const RestaurantPage = () => {
   const [dishItems, setDishItems] = useState([]);
   const { id } = useParams();
 
-  const fetchDishes = async () => {
-    try {
-      const response = await fetch(
-        `https://cors-handlers.vercel.app/api/?url=https%3A%2F%2Fwww.swiggy.com%2Fdapi%2Fmenu%2Fpl%3Fpage-type%3DREGULAR_MENU%26complete-menu%3Dtrue%26lat%3D26.9124336%26lng%3D75.7872709%26restaurantId%3D${id}`
-      );
-      const Resdata = await response.json();
-      const ResDetails = Resdata?.data?.cards[2]?.card?.card?.info;
-      console.log("Restaurant Details:", ResDetails);
-
-      const dishItem =
-        Resdata?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
-
-      setRestaurantDetails(ResDetails);
-      setDishItems(dishItem.slice(1));
-    } catch (error) {
-      console.error("Error fetching dishes:", error);
-    }
-  };
-
   useEffect(() => {
+    const fetchDishes = async () => {
+      try {
+        const response = await fetch(
+          `https://cors-handlers.vercel.app/api/?url=https%3A%2F%2Fwww.swiggy.com%2Fdapi%2Fmenu%2Fpl%3Fpage-type%3DREGULAR_MENU%26complete-menu%3Dtrue%26lat%3D26.9124336%26lng%3D75.7872709%26restaurantId%3D${id}`
+        );
+        const Resdata = await response.json();
+        const ResDetails = Resdata?.data?.cards[2]?.card?.card?.info;
+        console.log("Restaurant Details:", ResDetails);
+
+        const dishItem =
+          Resdata?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
+
+        setRestaurantDetails(ResDetails);
+        setDishItems(dishItem.slice(1));
+      } catch (error) {
+        console.error("Error fetching dishes:", error);
+      }
+    };
+
     if (id) {
       fetchDishes();
     }
-  }, [id, fetchDishes]);
+  }, [id]);
 
   return (
     <div className="md:mx-[200px] lg:mx-[400px]  mt-5 lg:mt-10 p-3 lg:p-5">
@@ -74,7 +74,7 @@ const RestaurantPage = () => {
       </div>
 
       {dishItems.map((items, index) => (
-        <RestaurantDish items={items} />
+        <RestaurantDish items={items} key={index} />
       ))}
     </div>
   );
