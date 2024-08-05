@@ -12,7 +12,7 @@ const RestaurantPage = () => {
 
   useEffect(() => {
     fetchDishes();
-  }, [id]);
+  }, []);
 
   const fetchDishes = async () => {
     try {
