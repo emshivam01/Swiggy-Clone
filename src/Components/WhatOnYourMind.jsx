@@ -7,33 +7,23 @@ import {
   CarouselPrevious,
 } from "./ui/carousel";
 import WhatsOnYouMindShimmer from "./WhatsOnYouMindShimmer";
+import { WhatsOnYouMind } from "../Utils/Data";
 
 const WhatOnYourMind = () => {
   const [gridImage, setGridImage] = useState([]);
-
-  const fetchGridImage = async () => {
-    try {
-      const data = await fetch(
-        "https://cors-anywhere.herokuapp.com/https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.65200&lng=77.16630&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-      );
-      const resData = await data.json();
-      const imageGridCardsInfo =
-        resData.data.cards[0]?.card?.card?.imageGridCards?.info;
-      if (imageGridCardsInfo) {
-        setGridImage(imageGridCardsInfo);
-      } else {
-        console.error("Image grid data not found in response");
-      }
-    } catch (error) {
-      console.error("Failed to fetch grid image:", error);
-    }
-  };
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchGridImage();
+    const timer = setTimeout(() => {
+      setGridImage(WhatsOnYouMind);
+      setLoading(false);
+    }, 1000);
+
+    // Cleanup timer if component unmounts
+    return () => clearTimeout(timer);
   }, []);
 
-  return gridImage.length < 1 ? (
+  return loading ? (
     <WhatsOnYouMindShimmer />
   ) : (
     <div className="px-8 lg:px-18 xl:px-48 pt-8">
@@ -43,7 +33,7 @@ const WhatOnYourMind = () => {
         <CarouselContent>
           {gridImage.map((gridCardImage) => {
             return (
-              <CarouselItem className="basis-1/7">
+              <CarouselItem className="basis-1/7" key={gridCardImage.imageId}>
                 <img
                   className="w-24 lg:w-36"
                   src={

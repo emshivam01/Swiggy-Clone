@@ -10,7 +10,7 @@ const RestaurantCard = ({ restaurant }) => {
         src={IMG_URL + restaurant.info.cloudinaryImageId}
         alt="restaurant-poster"
       />
-      <div className="p-3 bg-[#FAF9F8]">
+      <div className="p-3 ">
         <h2
           className="text-xl font-semibold truncate"
           title={restaurant.info.name}
@@ -28,7 +28,12 @@ const RestaurantCard = ({ restaurant }) => {
           {restaurant.info.cuisines.slice(0, 4).join(", ")}
         </div>
 
-        <div className="text-base truncate font-normal" title={restaurant.info.locality}>{restaurant.info.locality}</div>
+        <div
+          className="text-base truncate font-normal"
+          title={restaurant.info.locality}
+        >
+          {restaurant.info.locality}
+        </div>
       </div>
     </div>
   );

@@ -2,31 +2,14 @@ import { useState, useEffect } from "react";
 import RestaurantCard from "./RestaurantCard";
 import { Link } from "react-router-dom";
 import RestaurantCardShimmer from "./RestaurantCardShimmer";
+import { RESTAURANTS_URL } from "../Utils/config";
+import { HOMEPAGE_RESTAURANT_LIST } from "../Utils/Data";
 
 const RestaurantContainer = ({ search }) => {
-  const [restaurantData, setRestaurantData] = useState(null); // Set initial value to null
-  const [restaurantList, setRestaurantList] = useState([]);
-
-  const fetchRestaurant = async () => {
-    try {
-      const data = await fetch(
-        "https://cors-anywhere.herokuapp.com/https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.65200&lng=77.16630&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-      );
-
-      const resData = await data.json();
-      setRestaurantData(
-        resData.data.cards[4]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants || []
-
-      );
-      console.log(resData.data.cards[4]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants)
-    } catch (error) {}
-  };
-
-  useEffect(() => {
-    fetchRestaurant();
-  }, []);
+  const [restaurantData, setRestaurantData] = useState(HOMEPAGE_RESTAURANT_LIST); // Set initial value to null
+  const [restaurantList, setRestaurantList] = useState(
+    HOMEPAGE_RESTAURANT_LIST
+  );
 
   useEffect(() => {
     if (search === "") {
@@ -49,13 +32,12 @@ const RestaurantContainer = ({ search }) => {
     </div>
   ) : (
     <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-  {restaurantList.map((restaurant) => (
-    <Link to={"/restaurant/" + restaurant.info.id} key={restaurant.info.id}>
-      <RestaurantCard restaurant={restaurant} />
-    </Link>
-  ))}
-</div>
-
+      {restaurantList.map((restaurant) => (
+        <Link to={"/restaurant/" + restaurant.info.id} key={restaurant.info.id}>
+          <RestaurantCard restaurant={restaurant} />
+        </Link>
+      ))}
+    </div>
   );
 };
 

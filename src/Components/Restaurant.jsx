@@ -19,10 +19,15 @@ const Restaurant = () => {
   const fetchDishes = async () => {
     const data = await fetch(RESTAURANT_URL + id);
     const DishItems = await data.json();
-    console.log(DishItems.data.cards[4].groupedCard.cardGroupMap.REGULAR.cards[1].card.card.itemCards, 233);
+    console.log(
+      DishItems.data.cards[4].groupedCard.cardGroupMap.REGULAR.cards[1].card
+        .card.itemCards,
+      233
+    );
     setDishItems(DishItems?.data?.cards[2]?.card?.card?.info);
     setDishes(
-      DishItems.data.cards[4].groupedCard.cardGroupMap.REGULAR.cards[1].card.card.itemCards
+      DishItems.data.cards[4].groupedCard.cardGroupMap.REGULAR.cards[1].card
+        .card.itemCards
     );
   };
 
