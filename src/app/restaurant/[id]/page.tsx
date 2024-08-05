@@ -11,9 +11,7 @@ const RestaurantPage = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    if (id) {
-      fetchDishes();
-    }
+    fetchDishes();
   }, [id]);
 
   const fetchDishes = async () => {
