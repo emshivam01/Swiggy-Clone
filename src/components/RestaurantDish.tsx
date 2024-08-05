@@ -32,9 +32,12 @@ const Dish = ({ item }) => {
   if (item)
     return (
       <>
-        {item?.map((dish) => {
+        {item?.map((dish, index) => {
           return (
-            <div className="flex justify-between items-center p-2 mb-4 border-b">
+            <div
+              key={index}
+              className="flex justify-between items-center p-2 mb-4 border-b"
+            >
               <div className="w-[60%] md:w-[75%]">
                 <div>
                   {dish?.card?.info?.itemAttribute?.vegClassifier == "VEG" ? (
