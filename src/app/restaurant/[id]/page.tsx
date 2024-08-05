@@ -4,15 +4,12 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import RestaurantDish from "@/components/RestaurantDish"; // Adjust this import based on your project structure
 import Image from "next/image";
+import { Key } from "lucide-react";
 
 const RestaurantPage = () => {
   const [restaurantDetails, setRestaurantDetails] = useState({});
   const [dishItems, setDishItems] = useState([]);
   const { id } = useParams();
-
-  useEffect(() => {
-    fetchDishes();
-  }, []);
 
   const fetchDishes = async () => {
     try {
@@ -34,8 +31,10 @@ const RestaurantPage = () => {
   };
 
   useEffect(() => {
-    console.log("Dish Items After Update:", dishItems);
-  }, [dishItems]);
+    if (id) {
+      fetchDishes();
+    }
+  }, [id, fetchDishes]);
 
   return (
     <div className="md:mx-[200px] lg:mx-[400px]  mt-5 lg:mt-10 p-3 lg:p-5">
@@ -74,7 +73,7 @@ const RestaurantPage = () => {
         <p className=" pl-1 text-black font-semibold text-sm">30-35 Mins</p>
       </div>
 
-      {dishItems.map((items) => (
+      {dishItems.map((items, index) => (
         <RestaurantDish items={items} />
       ))}
     </div>
