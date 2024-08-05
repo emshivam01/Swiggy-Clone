@@ -10,18 +10,25 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
+// Define the type for a single cuisine item
+interface CuisineItem {
+  imageId: string;
+  description?: string; // Optional if the description may not be present
+}
+
 const PopularCuisines = () => {
-  const [popularCuisines, setPopularCuisines] = useState([]);
+  const [popularCuisines, setPopularCuisines] = useState<CuisineItem[]>([]);
 
   const fetchPopularCuisines = async () => {
-    const data = await fetch(
+    const response = await fetch(
       "https://cors-handlers.vercel.app/api/?url=https%3A%2F%2Fwww.swiggy.com%2Fdapi%2Flanding%2FPRE_SEARCH%3Flat%3D19.07480%26lng%3D72.88560"
     );
-    const fetchedData = await data.json();
+    const fetchedData = await response.json();
 
-    setPopularCuisines(
-      fetchedData?.data?.cards[1]?.card?.card?.imageGridCards?.info || []
-    );
+    // Ensure to check and set data correctly
+    const cuisines =
+      fetchedData?.data?.cards[1]?.card?.card?.imageGridCards?.info || [];
+    setPopularCuisines(cuisines);
   };
 
   useEffect(() => {

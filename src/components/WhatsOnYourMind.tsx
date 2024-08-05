@@ -11,15 +11,15 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-// Define the type for grid image data
+
 interface GridImage {
   id: string;
-  description: string; // Update this to match the actual data structure
-  imageId: string; // Adjust based on your actual data
+  description: string; 
+  imageId: string; 
 }
 
 const WhatsOnYourMind = () => {
-  const [gridImageData, setGridImageData] = useState<GridImage[]>([]); // Use the type here
+  const [gridImageData, setGridImageData] = useState<GridImage[]>([]); 
   const [gridImgTitle, setGridImgTitle] = useState("");
 
   const fetchGridImage = async () => {
@@ -29,7 +29,6 @@ const WhatsOnYourMind = () => {
       );
       const gridData = await response.json();
 
-      // Safely access the data
       const images =
         gridData?.data?.cards[0]?.card?.card?.imageGridCards?.info || [];
       setGridImageData(images);

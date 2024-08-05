@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import TopRestaurantChainsShimmer from "./shimmer/TopRestaurantChainsSHimmer";
+
 import {
   Carousel,
   CarouselContent,
@@ -11,15 +11,27 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-// Define the type for grid image data
-interface GridImage {
+// Define the type for the info object within a grid image
+interface GridImageInfo {
   id: string;
-  description: string; // Update this to match the actual data structure
-  imageId: string; // Adjust based on your actual data
+  cloudinaryImageId: string;
+  name: string;
+  description: string;
+  avgRating: string;
+  sla: {
+    deliveryTime: string;
+  };
+  cuisines: string[];
+  locality: string;
+}
+
+// Define the type for grid images with the nested info object
+interface GridImage {
+  info: GridImageInfo;
 }
 
 const TopRestaurantChains = () => {
-  const [topRestaurantData, setTopRestaurantData] = useState<GridImage[]>([]); // Use the type here
+  const [topRestaurantData, setTopRestaurantData] = useState<GridImage[]>([]);
   const [resTitle, setResTitle] = useState("");
 
   const fetchGridImage = async () => {
@@ -65,7 +77,7 @@ const TopRestaurantChains = () => {
               <Image
                 className="w-[350px] lg:w-[600px] h-40 object-cover rounded-md shadow-lg"
                 src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/${restaurant.info.cloudinaryImageId}`}
-                alt={restaurant.description || "Image"}
+                alt={restaurant.info.description || "Image"}
                 width={288}
                 height={360}
               />
@@ -77,7 +89,7 @@ const TopRestaurantChains = () => {
                 >
                   {restaurant.info.name}
                 </h2>
-                <div className=" text-base font-semibold flex items-center tracking-wide ">
+                <div className="text-base font-semibold flex items-center tracking-wide">
                   <Image
                     className="w-5 mr-1"
                     src="./images/rating.svg"
@@ -89,7 +101,7 @@ const TopRestaurantChains = () => {
                   {restaurant.info.sla.deliveryTime} mins
                 </div>
                 <div
-                  className="text-base font-normal mt-1 truncate "
+                  className="text-base font-normal mt-1 truncate"
                   title={restaurant.info.cuisines.slice(0, 4).join(", ")}
                 >
                   {restaurant.info.cuisines.slice(0, 2).join(", ")}

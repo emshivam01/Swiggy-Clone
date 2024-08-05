@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-
 import {
   Select,
   SelectContent,
@@ -14,16 +13,32 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
+// Define the types for the restaurant data
 interface Facet {
   id: string;
   label: string;
   facetInfo: { label: string }[];
 }
 
-interface RestaurantContainerProps {}
+interface RestaurantInfo {
+  id: string;
+  cloudinaryImageId: string;
+  name: string;
+  description: string;
+  avgRating: string;
+  sla: {
+    deliveryTime: string;
+  };
+  cuisines: string[];
+  locality: string;
+}
 
-const RestaurantContainer = ({ search }: RestaurantContainerProps) => {
-  const [RestaurantData, setRestaurantData] = useState([]);
+interface Restaurant {
+  info: RestaurantInfo;
+}
+
+const RestaurantContainer = () => {
+  const [restaurantData, setRestaurantData] = useState<Restaurant[]>([]);
   const [sortData, setSortData] = useState<Facet[]>([]);
   const [title, setTitle] = useState("");
 
@@ -34,20 +49,20 @@ const RestaurantContainer = ({ search }: RestaurantContainerProps) => {
       const response = await fetch(
         "https://cors-handlers.vercel.app/api/?url=https%3A%2F%2Fwww.swiggy.com%2Fdapi%2Frestaurants%2Flist%2Fv5%3Flat%3D19.07480%26lng%3D72.88560%26is-seo-homepage-enabled%3Dtrue%26page_type%3DDESKTOP_WEB_LISTING"
       );
-      const ResData = await response.json();
+      const resData = await response.json();
 
       // Safely access the data
       const labelData =
-        ResData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+        resData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants || [];
-      setTitle(ResData?.data?.cards[2]?.card?.card?.title);
-      setSortData(ResData?.data?.cards[3]?.card?.card?.facetList || []);
+      setTitle(resData?.data?.cards[2]?.card?.card?.title);
+      setSortData(resData?.data?.cards[3]?.card?.card?.facetList || []);
       setRestaurantData(
-        ResData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants
+        resData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants || []
       );
 
-      console.log(ResData?.data?.cards[3]?.card?.card?.facetList, 27);
+      console.log(resData?.data?.cards[3]?.card?.card?.facetList, 27);
     } catch (error) {
       console.error("Fetch error:", error);
     }
@@ -85,16 +100,16 @@ const RestaurantContainer = ({ search }: RestaurantContainerProps) => {
         ))}
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4 w-full">
-          {RestaurantData.map((restaurant) => (
+          {restaurantData.map((restaurant) => (
             <Link
               href={"/restaurant/" + restaurant.info.id}
               key={restaurant.info.id}
-              className=" md:hover:scale-95 transition-transform duration-300 "
+              className="md:hover:scale-95 transition-transform duration-300"
             >
               <Image
-                className="w-full md:w-[280px]  h-40 object-cover rounded-lg shadow-lg"
+                className="w-full md:w-[280px] h-40 object-cover rounded-lg shadow-lg"
                 src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/${restaurant.info.cloudinaryImageId}`}
-                alt={restaurant.description || "Image"}
+                alt={restaurant.info.description || "Image"}
                 width={288}
                 height={360}
               />
@@ -106,7 +121,7 @@ const RestaurantContainer = ({ search }: RestaurantContainerProps) => {
                 >
                   {restaurant.info.name}
                 </h2>
-                <div className=" text-base font-semibold flex items-center tracking-wide ">
+                <div className="text-base font-semibold flex items-center tracking-wide">
                   <Image
                     className="w-5 mr-1"
                     src="./images/rating.svg"
@@ -118,7 +133,7 @@ const RestaurantContainer = ({ search }: RestaurantContainerProps) => {
                   {restaurant.info.sla.deliveryTime} mins
                 </div>
                 <div
-                  className="text-base font-normal mt-1 truncate "
+                  className="text-base font-normal mt-1 truncate"
                   title={restaurant.info.cuisines.slice(0, 4).join(", ")}
                 >
                   {restaurant.info.cuisines.slice(0, 2).join(", ")}
